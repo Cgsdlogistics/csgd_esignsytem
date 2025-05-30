@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.EMAIL_USER || "jhbridgetranslation@gmail.com",
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS || "vmwa dbks phrc wfnk",
       },
     })
@@ -74,7 +74,7 @@ CGSD Logistics Team
 
     // Envoyer l'email
     await transporter.sendMail({
-      from: process.env.EMAIL_USER || "jhbridgetranslation@gmail.com",
+      from: process.env.EMAIL_USER,
       to: email,
       subject: subject,
       text: emailContent,
