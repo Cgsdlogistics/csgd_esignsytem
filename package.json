@@ -5,23 +5,14 @@
   "description": "CGSD Logistics contract signature application",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run migrate:prod && next build",
-    "build:force": "npm install --legacy-peer-deps && npm run migrate:prod && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "npx tsx scripts/migrate.ts",
-    "migrate:dev": "NODE_ENV=development npx tsx scripts/migrate.ts",
-    "migrate:prod": "NODE_ENV=production npx tsx scripts/migrate.ts || echo 'Migration completed or skipped'",
-    "postinstall": "npm run migrate:check",
-    "migrate:check": "npx tsx scripts/migrate.ts --check || echo 'Migration check completed'",
-    "db:migrate": "npx tsx scripts/migrate.ts",
-    "db:migrate:dev": "NODE_ENV=development npx tsx scripts/migrate.ts",
-    "db:migrate:prod": "NODE_ENV=production npx tsx scripts/migrate.ts",
-    "db:status": "npx tsx scripts/db-status.ts",
-    "db:cleanup": "npx tsx scripts/cleanup.ts",
-    "db:cleanup:dry": "npx tsx scripts/cleanup.ts -- --dry-run",
-    "railway:build": "npm run migrate:prod && npm run build",
-    "railway:start": "npm start"
+    "migrate": "node scripts/migrate.js",
+    "migrate:dev": "NODE_ENV=development node scripts/migrate.js",
+    "migrate:prod": "NODE_ENV=production node scripts/migrate.js || echo 'Migration completed or skipped'",
+    "docker:build": "docker build -t cgsd-contracts .",
+    "docker:run": "docker run -p 3000:3000 cgsd-contracts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -40,8 +31,7 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "tsx": "^4.19.4"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -57,5 +47,6 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
-  }
+  },
+  "packageManager": "npm@9.8.1"
 }
