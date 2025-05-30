@@ -1,14 +1,30 @@
+# railway.toml
 [build]
 builder = "nixpacks"
 
-[deploy]
-startCommand = "npm start"
-healthcheckPath = "/"
-healthcheckTimeout = 300
-restartPolicyType = "on_failure"
-restartPolicyMaxRetries = 3
+[phases.setup]
+nixPkgs = ["nodejs_18"]
 
-[env]
+[phases.install]
+dependsOn = ["setup"]
+cmds = [
+    "npm install --legacy-peer-deps"
+]
+
+[phases.build]
+dependsOn = ["install"]
+cmds = [
+    "npm run build"
+]
+
+[start]
+cmd = "npm start"
+
+[variables]
 NODE_ENV = "production"
 NEXT_TELEMETRY_DISABLED = "1"
 NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+
+# Forcer l'utilisation de npm
+[providers.node]
+packageManager = "npm"
