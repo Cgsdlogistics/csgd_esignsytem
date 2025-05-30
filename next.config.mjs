@@ -24,7 +24,11 @@ const nextConfig = {
       transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
       skipDefaultConversion: true
     }
+  },
+  // Ajout pour Railway
+  env: {
+    PORT: process.env.PORT || '3000'
   }
 }
 
-module.exports = nextConfig
+export default nextConfig
