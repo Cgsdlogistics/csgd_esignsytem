@@ -1,0 +1,26 @@
+# railway.toml
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm run build"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[services]]
+name = "cgsd-contracts"
+source = "."
+
+[services.cgsd-contracts]
+type = "web"
+minInstances = 1
+maxInstances = 3
+
+# Variables d'environnement spécifiques
+[env]
+NODE_ENV = "production"
+NEXT_TELEMETRY_DISABLED = "1"
