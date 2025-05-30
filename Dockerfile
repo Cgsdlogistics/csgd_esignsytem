@@ -36,10 +36,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NPM_CONFIG_LEGACY_PEER_DEPS=true
 
-# Run database migrations (with error handling)
-RUN npm run migrate:prod || echo "Migration skipped"
-
-# Build the application
+# Build the application (without migration)
 RUN npm run build
 
 # Production image, copy all the files and run next
