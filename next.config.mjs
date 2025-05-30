@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  experimental: {
-    serverComponentsExternalPackages: ['mysql2']
-  },
+  serverExternalPackages: ['mysql2'], // Mis à jour depuis experimental.serverComponentsExternalPackages
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -16,18 +14,12 @@ const nextConfig = {
   },
   // Be more permissive with external packages
   transpilePackages: ['lucide-react'],
-  // Reduce strictness
-  swcMinify: false,
   // Handle potential import issues
   modularizeImports: {
     'lucide-react': {
       transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
       skipDefaultConversion: true
     }
-  },
-  // Ajout pour Railway
-  env: {
-    PORT: process.env.PORT || '3000'
   }
 }
 
