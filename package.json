@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "build:with-migration": "npm run migrate:prod && next build",
+    "start": "npm run migrate:prod && next start",
     "lint": "next lint",
     "migrate": "node scripts/migrate.js",
     "migrate:dev": "NODE_ENV=development node scripts/migrate.js",
