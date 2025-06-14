@@ -75,7 +75,7 @@ export default function ContractPreview({ signature, signatureType, interpreterN
                 appointment, this will be classified as a "no-show." The interpreter shall still receive compensation
                 for their time; however, it is imperative that they remain at the appointment location for a minimum of
                 45 to 60 minutes, should the patient arrive. Furthermore, please note that compensation for all
-                interpretation services will be processed 30 to 40 days following the appointment. Please confirm your
+                interpretation services will be processed 2 weeks following the appointment. Please confirm your
                 acceptance of this offer by signing and returning this letter.
               </p>
 

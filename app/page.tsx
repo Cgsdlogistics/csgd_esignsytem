@@ -121,7 +121,7 @@ export default function HomePage() {
       yPosition += splitParagraph2.length * 5 + 5
 
       const paragraph3 =
-        'The hourly remuneration for this position is set at $30, contingent upon the duration of the appointment. The minimum appointment time is two hours. Should a patient fail to attend their scheduled appointment, this will be classified as a "no-show." The interpreter shall still receive compensation for their time; however, it is imperative that they remain at the appointment location for a minimum of 45 to 60 minutes, should the patient arrive. Furthermore, please note that compensation for all interpretation services will be processed 30 to 40 days following the appointment. Please confirm your acceptance of this offer by signing and returning this letter.'
+        'The hourly remuneration for this position is set at $30, contingent upon the duration of the appointment. The minimum appointment time is two hours. Should a patient fail to attend their scheduled appointment, this will be classified as a "no-show." The interpreter shall still receive compensation for their time; however, it is imperative that they remain at the appointment location for a minimum of 45 to 60 minutes, should the patient arrive. Furthermore, please note that compensation for all interpretation services will be processed 2 weeks following the appointment. Please confirm your acceptance of this offer by signing and returning this letter.'
       const splitParagraph3 = doc.splitTextToSize(paragraph3, pageWidth - 2 * margin)
       doc.text(splitParagraph3, margin, yPosition)
       yPosition += splitParagraph3.length * 5 + 5
