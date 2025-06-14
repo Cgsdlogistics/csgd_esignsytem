@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "npm run db:migrate:prod",
     "db:migrate": "npx tsx scripts/migrate.ts",
-    "db:migrate:dev": "NODE_ENV=development npx tsx scripts/migrate.ts",
-    "db:migrate:prod": "npx cross-env NODE_ENV=production npx tsx scripts/migrate.ts",
+    "db:migrate:dev": "cross-env NODE_ENV=development npx tsx scripts/migrate.ts",
+    "db:migrate:prod": "cross-env NODE_ENV=production npx tsx scripts/migrate.ts",
     "db:status": "npx tsx scripts/db-status.ts",
     "db:cleanup": "npx tsx scripts/cleanup.ts",
-    "db:cleanup:dry": "npx tsx scripts/cleanup.ts -- --dry-run"
+    "db:cleanup:dry": "npx tsx scripts/cleanup.ts -- --dry-run",
+    "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -39,7 +40,7 @@
     "@radix-ui/react-slider": "1.2.2",
     "@radix-ui/react-slot": "1.1.1",
     "@radix-ui/react-switch": "1.1.2",
-    "@radix-ui/react-tabs": "latest",
+    "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "1.2.4",
     "@radix-ui/react-toggle": "1.1.1",
     "@radix-ui/react-toggle-group": "1.1.1",
@@ -48,14 +49,13 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
-    "crypto": "latest",
+    "crypto": "^1.0.1",
     "date-fns": "^3.6.0",
     "dotenv": "^16.5.0",
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
-    "jspdf": "latest",
+    "jspdf": "^2.5.1",
     "lucide-react": "^0.454.0",
-    "my-v0-project": "file:",
     "mysql2": "^3.14.1",
     "next": "^15.3.3",
     "next-themes": "^0.4.4",
@@ -80,10 +80,14 @@
     "@types/react-dom": "^19",
     "cross-env": "^7.0.3",
     "postcss": "^8",
+    "rimraf": "^5.0.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   },
   "overrides": {
     "date-fns": "^3.6.0"
+  },
+  "engines": {
+    "node": ">=18.20.0"
   }
 }
